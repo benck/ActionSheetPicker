@@ -34,6 +34,7 @@
 @property (nonatomic, readonly) CGSize viewSize;
 @property (nonatomic, retain) NSMutableArray *customButtons;
 @property (nonatomic, assign) BOOL hideCancel;
+@property (nonatomic, assign) BOOL dismissWhenTapOut;
 @property (nonatomic, assign) CGRect presentFromRect;
 
     // For subclasses.
