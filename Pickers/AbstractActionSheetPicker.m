@@ -140,6 +140,20 @@
     [masterView addSubview:_pickerView];
     [self presentPickerForView:masterView];
     [masterView release];
+
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOut:)];
+    if(self.dismissWhenTapOut){
+        tap.cancelsTouchesInView = NO;
+        [self.actionSheet.superview addGestureRecognizer:tap];
+    }
+    [tap release];
+}
+
+-(void)tapOut:(UIGestureRecognizer *)gestureRecognizer {
+    CGPoint p = [gestureRecognizer locationInView:self.actionSheet];
+    if (p.y < 0) {
+        [self dismissPicker];
+    }
 }
 
 - (IBAction)actionPickerDone:(id)sender {
